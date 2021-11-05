@@ -1,7 +1,10 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 import AddReview from "./add-review";
 import { addReview } from "../../../api/api";
+import { errorMessages } from "../../../constants/errors";
+import "./addReview.css";
 
 const AddReviewView = props => {
   const history = useHistory();
@@ -31,8 +34,22 @@ const AddReviewView = props => {
       description,
       rating
     };
-    await addReview(data, id);
-    history.push("/");
+
+    switch (true) {
+      case data.rating === 0:
+        toast.error(errorMessages.RATING, {
+          className: "snackbar"
+        });
+        break;
+      case data.description.length < 4:
+        toast.error(errorMessages.DESCRIPTION, {
+          className: "snackbar"
+        });
+        break;
+      default:
+        await addReview(data, id);
+        history.push("/");
+    }
   };
 
   return (
