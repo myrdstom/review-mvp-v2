@@ -21,7 +21,6 @@ const AddReview = ({ onClick, handleSubmit, description, handleChange, ratingWid
                 value={description}
                 onChange={handleChange}
                 placeholder="Start Typing..."
-                required
               />
             </div>
             <button type="submit" className="reviews__add" id="submit__review">
