@@ -1,0 +1,4 @@
+@import "assets/constants.css";
+body {
+  font-family: var(--body-font);
+}
