@@ -8,9 +8,11 @@ const GetReviews = ({ review }) => {
   const [totalRating, setTotalRating] = useState(null);
   const [average, setAverage] = useState("");
   useEffect(() => {
-    const { widthPercentage, averageRating } = calculateTotalRating(review);
-    setTotalRating(widthPercentage);
-    setAverage(averageRating);
+    if (ratings.length) {
+      const { widthPercentage, averageRating } = calculateTotalRating(review);
+      setTotalRating(widthPercentage);
+      setAverage(averageRating);
+    }
   }, [review]);
 
   return (
