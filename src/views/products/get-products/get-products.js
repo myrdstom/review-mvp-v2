@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import RatingsStars from "../../../components/ratingsStars";
 import { calculateTotalRating, calculateEachReview } from "./utils";
 
-const GetReviews = ({ review }) => {
+const GetProducts = ({ review }) => {
   const { productName, productId, ratings } = review;
   const [totalRating, setTotalRating] = useState(null);
   const [average, setAverage] = useState("");
@@ -49,4 +49,4 @@ const GetReviews = ({ review }) => {
   );
 };
 
-export default GetReviews;
+export default GetProducts;

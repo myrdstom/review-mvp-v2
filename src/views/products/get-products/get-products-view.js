@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { baseURL } from "../../../config/baseUrl";
 import { getAllReviews } from "../../../api/api";
-import GetReviews from "./get-reviews";
+import GetProducts from "./get-products";
 import Loader from "../../../components/loader/loader";
-import "./get-reviews.css";
+import "./get-products.css";
 
 let socket;
 
-const GetReviewsView = () => {
+const GetProductsView = () => {
   const [allReviews, setAllReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   socket = io(baseURL);
@@ -40,7 +40,7 @@ const GetReviewsView = () => {
           {allReviews.length ? (
             allReviews.map(review => (
               <div className="all__reviews" key={review.productId}>
-                <GetReviews review={review} />
+                <GetProducts review={review} />
               </div>
             ))
           ) : (
@@ -51,4 +51,4 @@ const GetReviewsView = () => {
     </>
   );
 };
-export default GetReviewsView;
+export default GetProductsView;

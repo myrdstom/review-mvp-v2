@@ -4,8 +4,8 @@ import { Slide, ToastContainer } from "react-toastify";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/header/header";
-import GetReviewsView from "./views/reviews/get-reviews";
-import AddReview from "./views/reviews/add-review";
+import GetProductsView from "./views/products/get-products";
+import AddReview from "./views/products/add-review";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/addReview/:id" component={AddReview} />
-          <Route path="/" component={GetReviewsView} />
+          <Route path="/" component={GetProductsView} />
         </Switch>
       </Router>
       <ToastContainer
