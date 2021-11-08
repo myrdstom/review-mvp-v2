@@ -1,12 +1,12 @@
 import React from "react";
 import RatingsStars from "../../../components/ratingsStars";
 
-const AddReview = ({ onClick, handleSubmit, description, handleChange, ratingWidth, ratingsRef }) => (
+const AddReview = ({ onClick, onSubmit, description, handleChange, ratingWidth, ratingsRef }) => (
   <div id="add-review">
     <div className="all__reviews">
       <div className="reviews">
         <div className="title">What&apos;s your rating?</div>
-        <form id="myForm" onSubmit={handleSubmit}>
+        <form id="myForm" onSubmit={onSubmit} data-testid="form">
           <div className="review_details">
             <div className="reviews__title">Rating</div>
             <div className="review__list">
@@ -21,6 +21,7 @@ const AddReview = ({ onClick, handleSubmit, description, handleChange, ratingWid
                 value={description}
                 onChange={handleChange}
                 placeholder="Start Typing..."
+                data-testId="input-review-id"
               />
             </div>
             <button type="submit" className="reviews__add" id="submit__review">

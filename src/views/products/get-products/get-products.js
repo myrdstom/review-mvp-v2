@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import RatingsStars from "../../../components/ratingsStars";
 import { calculateTotalRating, calculateEachReview } from "./utils";
 
-const GetProducts = ({ review }) => {
-  const { productName, productId, ratings } = review;
+const GetProducts = ({ product }) => {
+  const { productName, productId, ratings } = product;
   const [totalRating, setTotalRating] = useState(null);
   const [average, setAverage] = useState("");
   useEffect(() => {
-    if (ratings.length) {
-      const { widthPercentage, averageRating } = calculateTotalRating(review);
+    if (ratings && ratings.length) {
+      const { widthPercentage, averageRating } = calculateTotalRating(product);
       setTotalRating(widthPercentage);
       setAverage(averageRating);
     }
-  }, [review]);
+  }, [product]);
 
   return (
-    <div className="reviews">
+    <div className="products">
       <div className="title">{productName}</div>
-      <div className="reviews__content" id={productId}>
+      <div className="products__content" id={productId}>
         <span>
           <span className="reviews__rating">{average}</span>
           <RatingsStars calculatedProgress={totalRating} />

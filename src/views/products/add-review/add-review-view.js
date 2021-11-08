@@ -53,17 +53,17 @@ const AddReviewView = props => {
   };
 
   return (
-    <>
+    <div data-testid="review">
       <AddReview
         handleChange={handleChange}
         reviewId={id}
         onClick={handleClick}
         description={description}
-        handleSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         ratingWidth={width}
         ratingsRef={ratingsRef}
       />
-    </>
+    </div>
   );
 };
 

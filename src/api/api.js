@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { baseURL } from "../config/baseUrl";
 
-export const getAllReviews = async () => {
+export const getAllProducts = async () => {
   try {
     const response = await axios.get(`${baseURL}/products`);
     return response.data;
