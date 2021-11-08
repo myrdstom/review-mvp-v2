@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { baseURL } from "../../../config/baseUrl";
-import { getAllReviews } from "../../../api/api";
+import { getAllProducts } from "../../../api/api";
 import GetProducts from "./get-products";
 import Loader from "../../../components/loader/loader";
 import "./get-products.css";
@@ -9,13 +9,13 @@ import "./get-products.css";
 let socket;
 
 const GetProductsView = () => {
-  const [allReviews, setAllReviews] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   socket = io(baseURL);
 
   useEffect(() => {
     socket.on("rating-added", updatedProducts => {
-      setAllReviews(updatedProducts);
+      setAllProducts(updatedProducts);
     });
 
     return () => {
@@ -25,8 +25,8 @@ const GetProductsView = () => {
 
   useEffect(() => {
     (async () => {
-      const reviews = await getAllReviews();
-      setAllReviews(reviews);
+      const products = await getAllProducts();
+      setAllProducts(products);
       setLoading(false);
     })();
   }, []);
@@ -37,10 +37,10 @@ const GetProductsView = () => {
         <Loader />
       ) : (
         <>
-          {allReviews.length ? (
-            allReviews.map(review => (
-              <div className="all__reviews" key={review.productId}>
-                <GetProducts review={review} />
+          {allProducts && allProducts.length ? (
+            allProducts.map(product => (
+              <div className="all__products" data-testid="productData" key={product.productId}>
+                <GetProducts product={product} />
               </div>
             ))
           ) : (

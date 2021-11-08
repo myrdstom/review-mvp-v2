@@ -1,4 +1,6 @@
-.all__reviews {
+@import "../../../assets/constants.css";
+
+.all__products {
   position: relative;
   display: flex;
   justify-content: center;
@@ -6,7 +8,7 @@
   flex-direction: column;
 }
 
-.reviews {
+.products {
   width: 600px;
   border: 1px solid #fff;
   border-radius: 5px;
@@ -19,7 +21,7 @@
   font-weight: bold;
 }
 
-.reviews__content {
+.products__content {
   display: flex;
   justify-content: space-between;
   align-content: center;
