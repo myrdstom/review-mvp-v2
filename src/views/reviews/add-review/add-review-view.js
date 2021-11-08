@@ -53,7 +53,7 @@ const AddReviewView = props => {
   };
 
   return (
-    <div>
+    <>
       <AddReview
         handleChange={handleChange}
         reviewId={id}
@@ -63,7 +63,7 @@ const AddReviewView = props => {
         ratingWidth={width}
         ratingsRef={ratingsRef}
       />
-    </div>
+    </>
   );
 };
 
