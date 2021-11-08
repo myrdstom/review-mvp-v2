@@ -3,12 +3,14 @@ import io from "socket.io-client";
 import { baseURL } from "../../../config/baseUrl";
 import { getAllReviews } from "../../../api/api";
 import GetReviews from "./get-reviews";
+import Loader from "../../../components/loader/loader";
 import "./get-reviews.css";
 
 let socket;
 
 const GetReviewsView = () => {
   const [allReviews, setAllReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
   socket = io(baseURL);
 
   useEffect(() => {
@@ -25,21 +27,28 @@ const GetReviewsView = () => {
     (async () => {
       const reviews = await getAllReviews();
       setAllReviews(reviews);
+      setLoading(false);
     })();
   }, []);
 
   return (
-    <div>
-      {allReviews.length ? (
-        allReviews.map(review => (
-          <div className="all__reviews" key={review.productId}>
-            <GetReviews review={review} />
-          </div>
-        ))
+    <>
+      {loading ? (
+        <Loader />
       ) : (
-        <div className="alt_text">Please add a product</div>
+        <>
+          {allReviews.length ? (
+            allReviews.map(review => (
+              <div className="all__reviews" key={review.productId}>
+                <GetReviews review={review} />
+              </div>
+            ))
+          ) : (
+            <div className="alt_text">Please add a product</div>
+          )}
+        </>
       )}
-    </div>
+    </>
   );
 };
 export default GetReviewsView;
